@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ybvwy8rgxx6"]
+
+[ext_resource type="Script" uid="uid://dltxmiqd86xqy" path="res://script/Main.gd" id="1_itxqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itxqv"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_v0l8b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp4xf"]
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_brvut"]
+
+[sub_resource type="Environment" id="Environment_itxqv"]
+background_mode = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_itxqv")
+inner_radius = 1.4
+outer_radius = 1.6
+tile_model_path = "res://tiles/tile_test.glb"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, 0, 8.912034)
+light_energy = 1.5
+sky_mode = 1
+
+[node name="InnerLines2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_itxqv")
+mesh = SubResource("ImmediateMesh_v0l8b")
+
+[node name="OuterLines2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wp4xf")
+mesh = SubResource("ImmediateMesh_brvut")
+
+[node name="ModelContainer2" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.839139)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_itxqv")
